@@ -1,0 +1,146 @@
+#id_disp {
+    position: relative;
+    display: inline-block;
+    /* border: 1px solid rgba(74, 40, 230, 0.274); */
+    width: 1418px;
+    height: 610px;
+    overflow: hidden;
+    left: -8px;
+    top: -8px;
+}
+
+input:focus{
+    outline: none;
+}
+
+#id_birdImg {
+    display: inline-block;
+    position: relative;
+    top: -188px;
+    left: -10px;
+    width: 710px;
+    height: 620px;
+}
+
+#id_right {
+    position: relative;
+    display: inline-block;
+    /* border: 1px solid black; */
+    width: 700px;
+    height: 800px;
+}
+
+#id_idTxt {
+    position: absolute;
+    display: inline-block;
+    left: 70px;
+    top: 32px;
+    background-color: rgba(128, 128, 128, 0.042);
+}
+
+#id_passTxt {
+    position: absolute;
+    display: inline-block;
+    background-color: rgba(128, 128, 128, 0.042);
+    left: 250px;
+    top: 32px;
+}
+
+.cl_inputG1 {
+    display: inline-block;
+    position: absolute;
+    left: 65px;
+    top: 10px;
+    width: 180px;
+    height: 50px;
+    background-color: rgb(245, 248, 250);
+}
+
+.cl_inputG2 {
+    display: inline-block;
+    position: absolute;
+    left: 250px;
+    top: 10px;
+    width: 180px;
+    height: 50px;
+    background-color: rgb(245, 248, 250);
+}
+
+#id_idPh {
+    left: 70px;
+    top: 12px;
+    position: absolute;
+    display: inline-block;
+    font-size: 13px;
+    color: rgb(28, 164, 244);
+}
+
+#id_passPh {
+    left: 250px;
+    top: 12px;
+    position: absolute;
+    display: inline-block;
+    font-size: 13px;
+    color: rgb(128, 128, 128);
+}
+
+#id_btn1 {
+    left: 440px;
+    top: 16px;
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    color: rgb(28, 164, 244);
+    font-weight: bold;
+    border-radius: 25px;
+    width: 70px;
+    height: 37px;
+    border: 1px solid rgb(28, 164, 244);
+}
+
+#id_simpai> :nth-child(1) {
+    font-size: 11px;
+    position: absolute;
+    left: 252px;
+    top: 62px;
+    color: rgb(28, 164, 244);
+}
+
+#id_rightBottom {
+    position: absolute;
+    display: inline-block;
+    left: 100px;
+    top: 120px;
+}
+
+#id_rightBottom> :nth-child(2) {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#id_rightBottom> :nth-child(3) {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#id_rightBottom> :nth-child(5) {
+    font-weight: bold;
+    font-size: 15px;
+    background-color: rgb(28, 164, 244);
+    color: white;
+    border: 1px solid white;
+    width: 370px;
+    height: 35px;
+    border-radius: 30px;
+}
+
+#id_rightBottom> :nth-child(8) {
+    font-weight: bold;
+    font-size: 15px;
+    color: rgb(28, 164, 244);
+    background-color: white;
+    border: 1px solid rgb(28, 164, 244);
+    width: 370px;
+    height: 35px;
+    border-radius: 30px;
+}

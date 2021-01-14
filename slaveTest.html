@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./myJs.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var slave = new XMLHttpRequest();
+        slave.open("GET", "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=Auguste%20Renoir");
+
+        slave.onreadystatechange = function () {
+            if (slave.readyState == 4 && slave.status == 200) {
+                var idArr = $(JSON.parse(slave.responseText)).eq(1);
+                // console.log(idArr);
+
+                /*이미지가 있는 작품들 전체의 id들이 들어있는 배열. 원소 100개이상.*/
+                window.idArr = idArr["prevObject"][0]["objectIDs"];
+                console.log(window.idArr);
+
+                // 첫 화면에 뿌릴 사진의 아이디만 들어 있는 배열 
+                window.partial = [];
+                for (var i = 0; i < 12; i++) {
+                    partial.push(window.idArr[i]); ////12개
+                }
+                // alert("다갖고와쩌ㅠ힘들어쪄");
+                //시간 끌기 시도
+                // for (; "ysline";) { 
+                //     if (partial.length == 12) {
+                //         break;
+                //     }
+                // }
+                // $buttons.eq(0).click(); //클릭시 일어날 이벤트는 이보다 더 위에서 정의.
+            }
+        };
+
+        slave.send();
+    </script>
+</body>
+
+</html>

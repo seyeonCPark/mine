@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./myJs.js"></script>
+    <link rel="stylesheet" href="./twitter2style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <title>더 보기 / 트위터</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <div class="container" style="height:660px;">
+            <div class="left">
+                <img src="./images/tinyBird.png" width="35px" height="35px" alt="">
+                <input type="button" value="&nbsp&nbsp&nbsp홈" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp탐색하기" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp알림" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp쪽지" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp북마크" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp리스트" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp프로필" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp더 보기" style="cursor:pointer; color:rgb(28,164,244)"
+                    onmouseout="f_out(this)" onmouseover="f_over(this)"><br>
+                <div id="id_chottoLogout"></div>
+                <div id="id_accountProfile">
+                    <img src="" width="50px" height="50px" alt="">
+                    <input type="button" id="id_downBelow"
+                        style="background-image: url(./images/downBelow.png); background-size:contain; cursor: pointer;">
+                </div>
+
+            </div>
+            <div class="center" style="height:660px;">
+                <div class="home" style="position: fixed;">&nbsp&nbsp더 보기</div>
+                <div class="covid" id="covid19" style="position: relative; top:42px;">
+                    <img src="./images/corona_ima.jpeg" width="484" height="250" style="cursor: pointer;">
+                    <div style="font-size: 20px; position: absolute; top: 205px; left: 15px; cursor: pointer;">코로나19 현황
+                    </div>
+                    <div style="font-size: 12px; position: absolute; top: 230px; left: 18px; cursor: pointer; color: white;">실시간 이슈
+                    </div>
+                </div>
+                <div id="id_feedForMe">
+                    <!-- chart -->
+                    <div class="annai">통계 서비스 시작 안내</div>
+                    <div class="shield">
+                        <트위터 사용자 연령 몰래조사 결과 통계>
+                    </div>
+                    <div id="chartContainer" style="display: none;" class="cl_chartCon">
+                        <canvas id="myChart" width="400" height="400"></canvas>
+                    </div>
+                    <div class="shield">
+                        <용우샘 수업 체감속도 통계 for nextIT>
+                    </div>
+                    <div id="chartContainer2" style="display: none;" class="cl_chartCon">
+                        <canvas id="myChart2" width="400" height="400"></canvas>
+                    </div>
+                    <div class="shield">
+                        <세계에서 가장 가치 있는 축구팀 통계>
+                    </div>
+                    <div id="chartContainer3" style="display: none;" class="cl_chartCon">
+                        <canvas id="myChart3" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div id="id_search">
+                    <img src="./images/magnifyingGlass.png">
+                    <input id="id_searchInput" type="text" value="" placeholder="트위터 검색" style="z-index: 200;"
+                        autocomplete="off">
+                    <div id="id_chottoShow">사용자, 화제, 키워드를 검색해보세요</div>
+                </div>
+                <div id="id_recommendation">
+                    <div style="position: absolute; display: block; width: 310px;
+                                height:30px; line-height:25px; top: 8px; font-size: 18px; font-weight: bold;">
+                        &nbsp&nbsp나를 위한 트렌드
+                        <hr>
+                    </div>
+                    <img id="id_settingIcon" src="./images/setting.png"
+                        style="background-color: transparent; cursor:pointer; width: 25px; height: 25px; border-radius: 12.5px; border: none; left: 275px; top: 11px; position: absolute; display: inline-block;">
+                    <div class="cl_recKids" style="height:50px; top: 45px; line-height: 50px;">
+                        &nbsp&nbsp코로롱바이러수&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-대한민국에서 트렌드중
+                        <hr>
+                    </div>
+                    <div class="cl_recKids" style="height:50px; top: 100px; line-height: 50px;">&nbsp&nbsp오마에와모오신데이루 뜻
+                        <hr>
+                    </div>
+                    <div class="cl_recKids" style="height:50px; top: 155px; line-height: 50px;">&nbsp&nbsp자바스크립트 라이부라리
+                        <hr>
+                    </div>
+                    <div class="cl_recKids" style="height:50px; top: 215px; line-height: 50px;">&nbsp&nbsp#비욘세 코어근력
+                        <hr>
+                    </div>
+                    <div class="cl_recKids" style="height:50px; top: 275px; line-height: 50px;">&nbsp&nbsp자바FX 쓸모
+                        <hr>
+                    </div>
+                </div>
+
+            </div>
+        </div> 
+        <script>
+            // script only for the charts
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['20대↓', '30대', '40대', '50대', '60대↑'],
+                    datasets: [{
+                        data: [66, 23, 15, 7, 2],
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.7)',
+                            "#aae3b9",
+                            // "rgba(232, 73, 153, 0.54)",
+                            "rgba(235, 202, 40, 0.67)",
+                            'rgba(10, 192, 192, 0.3)',
+                            "#e9c2f2",
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    title: {
+                        text: "트위터 사용자 연령 통계 (2020)",
+                        display: true
+                    }
+                }
+            });
+
+            var ctx2 = document.getElementById('myChart2').getContext('2d');
+            var myChart2 = new Chart(ctx2, {
+                type: 'pie',
+                data: {
+                    labels: ['그렇다', '무순'],
+                    datasets: [{
+                        data: [99.728, 0.272],
+                        backgroundColor: [
+                            "pink", "black"
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    title: {
+                        text: "용우샘 수업이 너무 빠르다고 생각하는가?",
+                        display: true
+                    }
+                }
+            });
+
+            var ctx3 = document.getElementById('myChart3').getContext('2d');
+            var myChart3 = new Chart(ctx3, {
+                type: 'bar',
+                data: {
+                    labels: ['레알 마드리드', 'FC유나이티드', '맨체스터 유나이티드', '바이에른 뮌헨', '맨체스터 시티', '첼시FC', '아스날FC', '리버풀FC', '토트넘', '유벤투스'],
+                    datasets: [{
+                        label: "by Forbes",
+                        data: [4239, 4021, 3808, 3024, 2688, 2576, 2268, 2183, 1624, 1512],
+                        backgroundColor: [
+                            'rgba(232, 130, 27, 0.3)',
+                            'rgba(232, 232, 27, 0.3)',
+                            'rgba(130, 232, 27, 0.3)',
+                            'rgba(27, 232, 27, 0.3)',
+                            'rgba(27, 232, 130, 0.3)',
+                            'rgba(27, 232, 232, 0.3)',
+                            'rgba(27, 130, 232, 0.3)',
+                            'rgba(27, 27, 232, 0.3)',
+                            'rgba(130, 27, 232, 0.3)',
+                            'rgba(232, 27, 130, 0.3)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    title: {
+                        text: "세계에서 가장 가치 있는 축구팀 (2019)",
+                        display: true
+                    }
+                }
+            });
+
+            var chartContainers = document.querySelectorAll(".cl_chartCon");
+            var shields = document.querySelectorAll(".shield");
+            var j = {};
+            j[0] = false;
+            j[1] = false;
+            j[2] = false;
+
+            shields[0].onclick = function () {
+                if (!j[0]) {
+                    chartContainers[0].style.display = "";
+                    j[0] = true;
+                } else {
+                    chartContainers[0].style.display = "none";
+                    j[0] = false;
+                }
+            }
+            shields[1].onclick = function () {
+                if (!j[1]) {
+                    chartContainers[1].style.display = "";
+                    j[1] = true;
+                } else {
+                    chartContainers[1].style.display = "none";
+                    j[1] = false;
+                }
+            }
+            shields[2].onclick = function () {
+                if (!j[2]) {
+                    chartContainers[2].style.display = "";
+                    j[2] = true;
+                } else {
+                    chartContainers[2].style.display = "none";
+                    j[2] = false;
+                }
+            }
+        </script>
+        <script>
+            var tableName = "Twitterians";
+            var users = JSON.parse(localStorage.getItem(tableName));
+            var nowId = request.getParameter("nm_id");
+
+            for (var i = 0; i < users.length; i++) {
+                if (nowId == users[i].eId) {
+                    var nowNickname = users[i].eNickname;
+                    break;
+                }
+            }
+
+            $(".covid").children().eq(0).click(function(){
+                window.open('https://corona-live.com/','name','_blank');
+            });
+
+
+            //right setting icon 색변경
+            var v_settingIcon = document.getElementById("id_settingIcon");
+            v_settingIcon.onmouseover = function () {
+                this.style.backgroundColor = "rgba(133, 213, 252,0.282)";
+            };
+            v_settingIcon.onmouseout = function () {
+                this.style.backgroundColor = "transparent";
+            };
+
+            //right 트렌드 마우스오버/아웃 색변경
+            var v_recKids = document.getElementsByClassName("cl_recKids");
+            for (var i = 0; i < v_recKids.length; i++) {
+                v_recKids[i].addEventListener("mouseover", function () {
+                    this.style.backgroundColor = "rgb(233, 238, 242)";
+                });
+                v_recKids[i].addEventListener("mouseout", function () {
+                    this.style.backgroundColor = "transparent";
+                });
+            }
+
+
+            var cl_left = document.querySelectorAll(".left")[0];
+            var apart = 10;
+
+            // 왼쪽 버튼들 상하간격 주기
+            for (var i = 0; i < cl_left.children.length; i++) {
+                if (cl_left.children[i].type == "button") {
+                    cl_left.children[i].style.top = "30px";
+                }
+                cl_left.children[i].style.top = parseInt(cl_left.children[i].style.top) + apart + "px";
+                apart += 25;
+            }
+
+
+            // 마우스오버, 아웃 시 버튼 색 블루로 변경
+            function f_over(arg) {
+                arg.style.backgroundColor = "rgba(133, 213, 252,0.282)";
+                arg.style.border = "1px solid rgba(133, 213, 252,0.282)";
+                arg.style.color = "rgb(28, 164, 244)";
+            }
+            function f_out(arg) {
+                arg.style.backgroundColor = "transparent";
+                arg.style.border = "1px solid transparent";
+                if (arg.value) {
+                    if (arg.value.indexOf("더") != -1) {
+
+                    } else {
+                        arg.style.color = "black";
+                    }
+                }
+            }
+
+            // onload시 왼쪽 하단 미니 프로필에 닉네임(cl_profileId 자식3), @아이디(자식4)
+
+            var v_accountProfile = document.querySelector("#id_accountProfile");
+            v_accountProfile.addEventListener("mouseover", f_over.bind(null, v_accountProfile));
+            v_accountProfile.addEventListener("mouseout", f_out.bind(null, v_accountProfile));
+
+            window.onload = function () {
+                var tableName = "Twitterians";
+                var superuser = { eId: "sudo", ePw: "1004", eNickname: "superuser", eImg: "images/sudo.jpg" };
+                var users = JSON.parse(localStorage.getItem(tableName));
+
+                var nowId = request.getParameter("nm_id");
+
+                var $v_profileNickname = $("<div></div>");
+                $v_profileNickname.attr("class", "cl_profileId").css("position", "absolute");
+                $v_profileNickname.appendTo($(v_accountProfile));
+
+                for (var i = 0; i < users.length; i++) {
+                    if (nowId == users[i].eId) {
+                        $v_profileNickname.html(users[i].eNickname);
+                        $(v_accountProfile).children().eq(0).attr("src", users[i].eImg);
+                        break;
+                    }
+                }
+
+                var v_profileId = document.createElement("div");
+                v_profileId.innerHTML = "@" + nowId;
+                $(v_profileId).attr("class", "cl_profileId").css("position", "absolute");
+                $(v_accountProfile).append($(v_profileId));
+
+                var v_accountToLogout = document.querySelector("#id_accountProfile").cloneNode(true);
+                v_accountToLogout.children[0].style.borderRadius = "25px";
+                v_accountToLogout.children[1].style.display = "none";
+                $(v_accountToLogout).attr("id", "id_accountToLogout").css({ "border": "1px solid transparent", "backgroundColor": "white" });
+
+                var checkMark = document.createElement("img");
+                checkMark.setAttribute("id", "id_checkMark");
+                checkMark.src = "./images/checkMarkBlue.png";
+                v_accountToLogout.appendChild(checkMark);
+                v_chottoLogout.appendChild(v_accountToLogout);
+
+                v_chottoLogout.innerHTML += "<br><hr>";
+
+                var v_addAccount = document.createElement("div");
+                v_addAccount.setAttribute("id", "id_addAccount");
+                v_addAccount.innerHTML = "&nbsp&nbsp&nbsp&nbsp기존 계정 추가<hr>";
+                v_chottoLogout.appendChild(v_addAccount);
+                v_addAccount.addEventListener("mouseover", function () {
+                    this.style.backgroundColor = "rgb(233, 238, 242)";
+                });
+                v_addAccount.addEventListener("mouseout", function () {
+                    this.style.backgroundColor = "transparent";
+                });
+
+                var v_logingOut = document.createElement("div");
+                v_logingOut.setAttribute("id", "id_logingOut");
+                v_logingOut.innerHTML
+                    = "&nbsp&nbsp&nbsp&nbsp@" + request.getParameter("nm_id") + " 님 계정에서 로그아웃";
+                v_chottoLogout.appendChild(v_logingOut);
+                v_logingOut.addEventListener("mouseover", function () {
+                    this.style.backgroundColor = "rgb(233, 238, 242)";
+                });
+                v_logingOut.addEventListener("mouseout", function () {
+                    this.style.backgroundColor = "transparent";
+                });
+
+                //v_chottoLogout 내의 v_logingOut을 클릭하면, 로그아웃창으로.
+                v_logingOut.addEventListener("click", function () {
+                    location.href = "twitterLogout.html?nm_id=" + nowId;
+                });
+
+                var v_semo = document.createElement("div");
+                v_semo.setAttribute("id", "id_semo");
+                v_chottoLogout.appendChild(v_semo);
+            };
+
+
+            //트윗 검색창
+
+            var v_search = document.querySelector("#id_search");
+            var v_searchInput = document.querySelector("#id_searchInput");
+            var v_chottoShow = document.querySelector("#id_chottoShow")
+
+            v_searchInput.addEventListener("click", function () {
+                v_search.style.backgroundColor = "white";
+                v_search.style.border = "1px solid rgb(28, 164, 244)";
+                v_chottoShow.style.display = "inline-block";
+                v_chottoShow.style.zIndex = 100;
+            });
+
+
+            v_searchInput.onblur = function () {
+                v_search.style.backgroundColor = "rgb(233, 238, 242)";
+                v_search.style.border = "1px solid transparent";
+                v_chottoShow.style.display = "none";
+            };
+
+            // 검색할 키워드 search.html로 get방식 패스
+            $(v_searchInput).keypress(function () {
+                event.preventDefault();
+                if ($(this).val().length != 0 && event.keyCode == 13) {
+                    var userIdToPass = request.getParameter("nm_id");
+                    location.href = "search.html?nm_id=" + userIdToPass + "&q=" + $(this).val();
+                }
+            });
+
+            var v_downBelow = document.getElementById("id_downBelow");
+            var v_chottoLogout = document.getElementById("id_chottoLogout");
+
+            var isRun = false;
+
+            //downBelow버튼 누르면 계정선택창 디스플레이를 inline-block으로.
+            v_downBelow.addEventListener("click", function () {
+                if (!isRun) {
+                    v_chottoLogout.style.display = "inline-block";
+                    v_accountProfile.style.cursor = "default";
+                    isRun = true;
+                }
+            });
+
+            // downBelow와 계정선택창 두개를 제외한 공간 선택시 none이되어야함
+            v_chottoLogout.addEventListener("mouseleave", function () {
+                v_chottoLogout.style.display = "none";
+                v_accountProfile.style.cursor = "pointer";
+                isRun = false;
+            });
+
+            var nowId = request.getParameter("nm_id");
+            
+            // 홈으로 이동
+            $(".left").find("input").eq(0).click(function () {
+                if (nowId == "sudo") {
+                    location.href = "twitter2.html?nm_id=" + nowId;
+                } else {
+                    location.href = "twitter2_ippann.html?nm_id=" + nowId;
+                }
+            });
+            
+            // 검색하는 곳으로 이동
+            $(".left").find("input").eq(1).click(function () {
+                location.href = "search.html?nm_id=" + nowId;
+            });
+        </script>
+    </form>
+</body>
+
+</html>

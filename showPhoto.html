@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script src="./myJs.js"></script>
+<script>
+    window.onload = function(){
+        var pathOfThatImg = request.getParameter("path");
+        var thatImg = document.createElement("img");
+        thatImg.src = pathOfThatImg;
+        console.log(thatImg.height);
+        if(thatImg.height > 700 || thatImg.height == 0){
+            thatImg.width = "400";
+            thatImg.height = "400";
+        }
+        document.body.appendChild(thatImg);
+    }
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        #chartContainer3 {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="chartContainer3">
+        <canvas id="myChart3" width="400" height="400"></canvas>
+    </div>
+    <script>
+        var ctx = document.getElementById('myChart3').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['레알마드리드', 'FC유나이티드', '맨체스터유나이티드', '바이에른뮌헨', '맨체스터시티', '첼시FC', '아스날FC', '리버풀FC', '토트넘', '유벤투스'],
+                datasets: [{
+                    label: "by Forbes",
+                    data: [4239, 4021, 3808, 3024, 2688, 2576, 2268, 2183, 1624, 1512],
+                    backgroundColor: [
+                        'rgba(232, 130, 27, 0.3)',
+                        'rgba(232, 232, 27, 0.3)',
+                        'rgba(130, 232, 27, 0.3)',
+                        'rgba(27, 232, 27, 0.3)',
+                        'rgba(27, 232, 130, 0.3)',
+                        'rgba(27, 232, 232, 0.3)',
+                        'rgba(27, 130, 232, 0.3)',
+                        'rgba(27, 27, 232, 0.3)',
+                        'rgba(130, 27, 232, 0.3)',
+                        'rgba(232, 27, 130, 0.3)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                title: {
+                    text: "세계에서 가장 가치 있는 축구팀 (2019)",
+                    display: true
+                }
+            }
+        }); 
+    </script>
+</body>
+
+</html>

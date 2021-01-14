@@ -1,0 +1,532 @@
+* {
+    text-align: left;
+    font-size: 10px;
+}
+
+.container {
+    position: relative;
+    top: -8px;
+    left: -8px;
+    width: 1300px;
+    height: 655px;
+    /* border: 1px solid rgba(63, 59, 59, 0.219); */
+    background-color: white;
+    overflow: hidden;
+}
+
+.left {
+    position: relative;
+    width: 400px;
+    height: 655px;
+    background-color: white;
+    float: left;
+
+    overflow: hidden;
+}
+
+.left> :nth-child(1) {
+    position: absolute;
+    left: 125px;
+    top: 10px;
+}
+
+button {
+    position: absolute;
+    left: 80px;
+}
+
+button:focus{
+    outline: none;
+}
+.center {
+    position: relative;
+    width: 497px;
+    height: 900px;
+    background-color: rgb(230, 236, 240);
+    float: left;
+    border: 1px solid rgba(63, 59, 59, 0.219);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.home {
+    position: relative;
+    transform: translateX(-1px);
+    top: -1px;
+    line-height: 40px;
+    width: 496px;
+    height: 43px;
+    background-color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: 1px solid rgba(63, 59, 59, 0.219);
+    z-index: 100;
+}
+
+
+.left>input[type="button"] {
+    position: absolute;
+    color: black;
+    left: 120px;
+    width: 120px;
+    height: 40px;
+    border-radius: 25px;
+    border: 1px solid white;
+    background: transparent;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#btn1_left {
+    width: 200px;
+    background-color: rgb(28, 164, 244);
+    border: 1px solid rgb(28, 164, 244);
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+}
+
+#id_tweetInput {
+    position: relative;
+    top: 42px;
+    left: -1px;
+    width: 497px;
+    height: 120px;
+    border: 1px solid rgba(63, 59, 59, 0.219);
+    background-color: white;
+}
+
+#id_tweetInput> :nth-child(1) {
+    display: inline-block;
+    position: relative;
+    left: 10px;
+    top: 7px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+#id_textArea{
+    position: absolute;
+    top: 7px;
+    left: 70px;
+    color: rgb(107, 106, 106);
+    display: inline-block;
+    line-height: 40px;
+    font-size: 18px;
+    width: 400px;
+    border: transparent;
+    background-color: transparent;
+}
+
+.tempu {
+    display: inline-block;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border-radius: 17.5px;
+    background-color: transparent;
+    border: 1px solid white;
+    top: 54px;
+    left: 15px;
+    background-size: contain;
+    cursor: pointer;
+}
+.cl_reaction {
+    display: inline-block;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border-radius: 12.5px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    top: 180px;
+    background-size: contain;
+    cursor: pointer;
+}
+
+    button.cl_submit{
+    width: 55px;
+    height: 35px;
+    border-radius: 17px;
+    position: relative;
+    background-color: rgba(133, 213, 252, 0.782);
+    border: 1px solid rgba(133, 213, 252, 0.782);
+    top: 40px;
+    left: 170px;
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+}
+
+
+#id_feedForMe{
+    width: 497px;
+    height: 608px;
+    position: relative;
+    top: 52px;
+    border: 1px solid rgba(63, 59, 59, 0.219);
+    display: inline-block;
+    background-color: white;
+    left: -1px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 1000;
+}
+
+#id_myTweet{
+    position: relative;
+}
+#id_othersTweet{
+    position: relative;
+    transform: translateX(-1px);
+    width: 497px;
+    height: 110px;
+    border: 0.5px solid rgba(63, 59, 59, 0.219);
+    display: block;
+}
+#id_othersTweet > :nth-child(1){
+    left: 10px;
+    top: 13px;
+}
+#id_othersTweet > :nth-child(2){
+    display: inline-block;
+    line-height: 40px;
+    font-size: 18px;
+    width: 400px;
+    border: transparent;
+    background-color: transparent;
+    position: absolute;
+    left: 70px;
+    top: 23px;
+}
+#id_othersPhotoTweet{
+    position: relative;
+    transform: translateX(-1px);
+    width: 497px;
+    height: 430px;
+    border: 0.5px solid rgba(63, 59, 59, 0.219);
+    display: block;
+}
+#id_othersPhotoTweet > :nth-child(1){
+    left: 10px;
+    top: 13px;
+}
+#id_othersPhotoTweet > :nth-child(2){
+    display: inline-block;
+    line-height: 40px;
+    font-size: 18px;
+    width: 400px;
+    border: transparent;
+    background-color: transparent;
+    position: absolute;
+    left: 70px;
+    top: 23px;
+}
+#id_othersPhotoTweet2{
+    position: relative;
+    transform: translateX(-1px);
+    width: 497px;
+    height: 320px;
+    border: 0.5px solid rgba(63, 59, 59, 0.219);
+    display: block;
+}
+#id_othersPhotoTweet2 > :nth-child(1){
+    left: 10px;
+    top: 13px;
+}
+#id_othersPhotoTweet2 > :nth-child(2){
+    display: inline-block;
+    line-height: 40px;
+    font-size: 18px;
+    width: 400px;
+    border: transparent;
+    background-color: transparent;
+    position: absolute;
+    left: 70px;
+    top: 23px;
+}
+
+
+#id_myTweet> :nth-child(1) {
+    left: 10px;
+    top: 7px;
+}
+
+#id_chottoLogout{
+    width: 280px;
+    height: 200px;
+    display: none;
+    position: absolute;
+    top: 360px;
+    left: 100px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px rgba(128, 128, 128, 0.288);
+}
+#id_accountToLogout{
+    border: 1px solid transparent;
+    background-color: white;
+    position: relative;
+    left: 15px;
+    background-color: white;
+    position: relative;
+    left: 15px;
+    top: 10px;
+    width: 250px;
+}
+
+#id_checkMark{
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    left: 230px;
+    top: 15px;
+}
+#id_addAccount{
+    width: 280px;
+    height: 53px;
+    line-height: 50px;
+    border: 1px solid transparent;
+    position: absolute;
+    left: -1px;
+    top: 75px;
+    font-size: 14px;
+    cursor: pointer;
+}
+#id_logingOut{
+    width: 280px;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid transparent;
+    position: absolute;
+    top: 133px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#id_semo{
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    left: 135px;
+    top: 195px;
+    transform: rotateZ(45deg);
+    background-color: white;
+    box-shadow: 2px 2px 0px 0px rgba(128, 128, 128, 0.288);
+}
+
+#id_accountProfile {
+    position: relative;
+    border: 1px solid white;
+    background-color: transparent;
+    width: 240px;
+    height: 65px;
+    display: inline-block;
+    top: 460px;
+    left: 100px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#id_accountProfile> :nth-child(1) {
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    border-radius: 25px;
+}
+
+#id_downBelow{
+    display: inline-block;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border-radius: 12.5px;
+    background-color: transparent;
+    border: none;
+    top: 15px;
+    left: 208px;
+}
+.cl_profileId:nth-child(3){
+    width: 100px;
+    height: 40px;
+    left: 70px;
+    top: 12px;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    background-color : transparent;
+}
+.cl_profileId:nth-child(4){
+    width: 100px;
+    height: 40px;
+    left: 70px;
+    top: 28px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    color: gray;
+    background-color : transparent;
+}
+
+#id_showSelectedPhoto {
+    display: none;
+    border: 1px solid black;
+    width: 400px;
+    height: 102px;
+    position: absolute;
+    top: 70px;
+    left: 55px;
+}
+
+.right {
+    width: 400px;
+    height: 655px;
+    float: right;
+    background-color: white;
+    clear: right;
+    overflow: hidden;
+    position: relative;
+}
+
+#id_search{
+    position: absolute;
+    display: inline-block;
+    width: 310px;
+    height: 35px;
+    left: 30px;
+    top: 15px;
+    border: 1px solid transparent;
+    border-radius: 17px;
+    background-color: rgb(233, 238, 242);
+}
+
+#id_search :nth-child(1){
+    position: absolute;
+    display: inline-block;
+    width: 18px;
+    height: 15px;
+    top: 10px;
+    left: 12px;
+    border: none;
+}
+
+#id_search :nth-child(2){
+    position: absolute;
+    display: inline-block;
+    width: 220px;
+    height: 20px;
+    left: 40px;
+    top: 7px;
+    border: none;
+    background-color: transparent;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+}
+
+#id_recommendation{
+    position: absolute;
+    display: inline-block;
+    width: 310px;
+    height: 350px;
+    left: 30px;
+    top: 70px;
+    border: 1px solid transparent;
+    border-radius: 17px;
+    background-color: rgb(240, 245, 248);
+}
+.cl_recKids{
+    width: 310px;
+    position: absolute;
+    display: block;
+    border:none;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+textarea:focus{
+    outline: none;
+}
+
+#id_chottoShow{
+    border: 1px solid white;
+    width: 310px;
+    height: 90px;
+    position: absolute;
+    top: 36px;
+    left: -2px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px rgba(128, 128, 128, 0.288);
+    color: gray;
+    font-size: 14px;
+    text-align: center;
+    line-height: 50px;
+    display: none;
+}
+
+.shield{
+    position: relative;
+    left: -1px;
+    width: 497px;
+    height: 80px;
+    border: 1px solid rgba(63, 59, 59, 0.219);
+    background-color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 80px;
+    cursor: pointer;
+}
+
+.shield:hover{
+    background-color:  rgba(233,238,242,0.4);
+}
+
+.cl_chartCon{
+    width: 400;
+    height: 400;
+}
+
+.annai{
+    position: relative;
+    left: -1px;
+    width: 497px;
+    height: 50px;
+    border: 1px solid rgba(59, 61, 63, 0.219);
+    background-color: white;
+    font-size: 15px;
+    color:  rgba(24, 127, 230);
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.annai:hover{
+    background-color:  rgba(233,238,242,0.4);
+}
+
+.covid img{
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+    
+.covid img:hover{
+filter: grayscale(0%);
+filter: gray;
+-webkit-filter: grayscale(0%);
+filter: none;
+transition: 1s ease;
+}

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./myJs.js"></script>
+    <link rel="stylesheet" href="./twitter2style.css">
+    <link rel="stylesheet" href="./cssforTheSelements.css">
+    <script src="./tweetFactory.js"></script>
+    <script src="./botTweetFactory.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <title>탐색하기 / 트위터</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <div class="container">
+            <div class="left">
+                <img src="./images/tinyBird.png" width="35px" height="35px" alt="">
+                <input type="button" value="&nbsp&nbsp&nbsp홈" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp탐색하기" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp알림" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp쪽지" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp북마크" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp리스트" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp프로필" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp더 보기" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input id="btn1_left" type="button" value="트윗" style="cursor:pointer; display:none;"><br>
+                <div id="id_chottoLogout"></div>
+                <div id="id_accountProfile">
+                    <img src="" width="50px" height="50px" alt="">
+                    <input type="button" id="id_downBelow"
+                        style="background-image: url(./images/downBelow.png); background-size:contain; cursor: pointer;">
+                </div>
+
+            </div>
+            <div class="center">
+                <div class="home" style="position: fixed;">&nbsp&nbsp탐색하기</div>
+                <div id="id_feedForMe">
+
+                </div>
+            </div>
+            <div class="right">
+                <div id="id_search">
+                    <img src="./images/magnifyingGlass.png">
+                    <input id="id_searchInput" type="text" value="" placeholder="트위터 검색" autocomplete="off">
+                    <div id="id_chottoShow">사용자, 화제, 키워드를 검색해보세요</div>
+                </div>
+                <div id="id_recommendation">
+                    <div style="position: absolute; display: block; width: 310px;
+                                height:30px; line-height:25px; top: 8px; font-size: 18px; font-weight: bold;">
+                        &nbsp&nbsp나를 위한 트렌드
+                        <hr>
+                    </div>
+                    <img id="id_settingIcon" src="./images/setting.png"
+                        style="background-color: transparent; cursor:pointer; width: 25px; height: 25px; border-radius: 12.5px; border: none; left: 275px; top: 11px; position: absolute; display: inline-block;">
+                    <div class="cl_recKids" style="height:50px; top: 45px; line-height: 50px;">
+                        &nbsp&nbsp코로롱바이러수&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-대한민국에서 트렌드중
+                        <hr>
+                    </div>
+                    <div class="cl_recKids" style="height:50px; top: 100px; line-height: 50px;">&nbsp&nbsp뷍퉨소녠뒝
+                        <hr>
+                    </div>
+                    <div class="cl_recKids" style="height:50px; top: 155px; line-height: 50px;">&nbsp&nbsp데이터베이스 스키마
+                        <hr>
+                    </div>
+                    <div class="cl_recKids" style="height:50px; top: 215px; line-height: 50px;">&nbsp&nbsp7월반 파티투나잇?
+                        <hr>
+                    </div>
+                    <div class="cl_recKids" style="height:50px; top: 275px; line-height: 50px;">&nbsp오늘 올해 첫 눈
+                        <hr>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <input type="hidden" value="아작스버튼0" class="cl_ajaxBtn">
+        <script>
+            //right setting icon 색변경
+            var v_settingIcon = document.getElementById("id_settingIcon");
+            v_settingIcon.onmouseover = function () {
+                this.style.backgroundColor = "rgba(133, 213, 252,0.282)";
+            };
+            v_settingIcon.onmouseout = function () {
+                this.style.backgroundColor = "transparent";
+            };
+
+            //right 트렌드 마우스오버/아웃 색변경
+            var v_recKids = document.getElementsByClassName("cl_recKids");
+            for (var i = 0; i < v_recKids.length; i++) {
+                v_recKids[i].addEventListener("mouseover", function () {
+                    this.style.backgroundColor = "rgb(233, 238, 242)";
+                });
+                v_recKids[i].addEventListener("mouseout", function () {
+                    this.style.backgroundColor = "transparent";
+                });
+            }
+
+
+            var cl_left = document.querySelectorAll(".left")[0];
+            var apart = 10;
+            var apartTempu = 10;
+
+            var v_tweetInput = document.getElementById("id_tweetInput");
+
+            // 왼쪽 버튼들 상하간격 주기
+            for (var i = 0; i < cl_left.children.length; i++) {
+                if (cl_left.children[i].type == "button") {
+                    cl_left.children[i].style.top = "30px";
+                }
+                cl_left.children[i].style.top = parseInt(cl_left.children[i].style.top) + apart + "px";
+                apart += 25;
+            }
+
+
+            // 마우스오버, 아웃 시 버튼 색 블루로 변경
+            function f_over(arg) {
+                arg.style.backgroundColor = "rgba(133, 213, 252,0.282)";
+                arg.style.border = "1px solid rgba(133, 213, 252,0.282)";
+                arg.style.color = "rgb(28, 164, 244)";
+            }
+            function f_out(arg) {
+                arg.style.backgroundColor = "transparent";
+                arg.style.border = "1px solid transparent";
+                if (arg.value) {
+                    if (arg.value.indexOf("탐") != -1) {
+
+                    } else {
+                        arg.style.color = "black";
+                    }
+                }
+            }
+
+            var v_liked = false;
+            //이이네 버튼 누르면 빨간 하트로 이미지 바꿔치기 - ok
+            var iineBtns = document.getElementsByClassName("cl_iine");
+            for (var i = 0; i < iineBtns.length; i++) {
+                iineBtns[i].addEventListener("click", function () {
+                    if (!v_liked) {
+                        this.style.backgroundImage = "url(./images/heartful.png)";
+                        v_liked = true;
+                        return;
+                    }
+                    this.style.backgroundImage = "url(./images/heart.png)";
+                    v_liked = false;
+                });
+            }
+
+            // onload시 왼쪽 하단 미니 프로필에 닉네임(cl_profileId 자식3), @아이디(자식4)
+
+            var v_accountProfile = document.querySelector("#id_accountProfile");
+            v_accountProfile.addEventListener("mouseover", f_over.bind(null, v_accountProfile));
+            v_accountProfile.addEventListener("mouseout", f_out.bind(null, v_accountProfile));
+
+            window.onload = function () {
+                var passedParameter = request.getParameter("q");
+                $(v_searchInput).val(passedParameter);
+                if (passedParameter == "그림봇") {
+                    var ev = $.Event("keypress");
+                    ev.keyCode = 13;
+                    $(v_searchInput).trigger(ev);
+                } // onload이벤트에서 해줘야했다!! works!!!!!!!!!!!!! 아기분조아
+
+                var tableName = "Twitterians";
+                var superuser = { eId: "sudo", ePw: "1004", eNickname: "superuser", eImg: "images/sudo.jpg" };
+                var users = JSON.parse(localStorage.getItem(tableName));
+
+                var nowId = request.getParameter("nm_id");
+
+                var $v_profileNickname = $("<div></div>");
+                $v_profileNickname.attr("class", "cl_profileId").css("position", "absolute");
+                $v_profileNickname.appendTo($(v_accountProfile));
+
+                for (var i = 0; i < users.length; i++) {
+                    if (nowId == users[i].eId) {
+                        $v_profileNickname.html(users[i].eNickname);
+                        $(v_accountProfile).children().eq(0).attr("src", users[i].eImg);
+                        $(v_tweetInput).children().eq(0).attr("src", users[i].eImg); // 시퀀셜하겡
+                        break;
+                    }
+                }
+
+                var v_profileId = document.createElement("div");
+                v_profileId.innerHTML = "@" + nowId;
+                $(v_profileId).attr("class", "cl_profileId").css("position", "absolute");
+                $(v_accountProfile).append($(v_profileId));
+
+                var v_accountToLogout = document.querySelector("#id_accountProfile").cloneNode(true);
+                v_accountToLogout.children[0].style.borderRadius = "25px";
+                v_accountToLogout.children[1].style.display = "none";
+                $(v_accountToLogout).attr("id", "id_accountToLogout").css({ "border": "1px solid transparent", "backgroundColor": "white" });
+
+                var checkMark = document.createElement("img");
+                checkMark.setAttribute("id", "id_checkMark");
+                checkMark.src = "./images/checkMarkBlue.png";
+                v_accountToLogout.appendChild(checkMark);
+                v_chottoLogout.appendChild(v_accountToLogout);
+
+                v_chottoLogout.innerHTML += "<br><hr>";
+
+                var v_addAccount = document.createElement("div");
+                v_addAccount.setAttribute("id", "id_addAccount");
+                v_addAccount.innerHTML = "&nbsp&nbsp&nbsp&nbsp기존 계정 추가<hr>";
+                v_chottoLogout.appendChild(v_addAccount);
+                v_addAccount.addEventListener("mouseover", function () {
+                    this.style.backgroundColor = "rgb(233, 238, 242)";
+                });
+                v_addAccount.addEventListener("mouseout", function () {
+                    this.style.backgroundColor = "transparent";
+                });
+
+                var v_logingOut = document.createElement("div");
+                v_logingOut.setAttribute("id", "id_logingOut");
+                v_logingOut.innerHTML
+                    = "&nbsp&nbsp&nbsp&nbsp@" + request.getParameter("nm_id") + " 님 계정에서 로그아웃";
+                v_chottoLogout.appendChild(v_logingOut);
+                v_logingOut.addEventListener("mouseover", function () {
+                    this.style.backgroundColor = "rgb(233, 238, 242)";
+                });
+                v_logingOut.addEventListener("mouseout", function () {
+                    this.style.backgroundColor = "transparent";
+                });
+
+                //v_chottoLogout 내의 v_logingOut을 클릭하면, 로그아웃창으로.
+                v_logingOut.addEventListener("click", function () {
+                    location.href = "twitterLogout.html";
+                });
+
+
+                //말풍선 모양 만들려고... 그냥 쪼고만 네모.
+                var v_semo = document.createElement("div");
+                v_semo.setAttribute("id", "id_semo");
+                v_chottoLogout.appendChild(v_semo);
+            };
+
+
+            //트윗 검색창
+
+            var v_search = document.querySelector("#id_search");
+            // var v_searchInput = v_search.children[1];
+            var v_searchInput = document.querySelector("#id_searchInput");
+            var v_chottoShow = document.querySelector("#id_chottoShow")
+
+            v_searchInput.addEventListener("click", function () {
+                v_search.style.backgroundColor = "white";
+                v_search.style.border = "1px solid rgb(28, 164, 244)";
+                v_chottoShow.style.display = "inline-block";
+                v_chottoShow.style.zIndex = 100;
+            });
+
+
+            v_searchInput.onblur = function () {
+                v_search.style.backgroundColor = "rgb(233, 238, 242)";
+                v_search.style.border = "1px solid transparent";
+                v_chottoShow.style.display = "none";
+            };
+
+            //
+            $buttons = $(".cl_ajaxBtn");
+
+            $buttons.eq(0).on("click", function () {
+                window.itemsArr = [];
+                // 그림봇으로 검색했을 때 localStorage에 몇 개 그림정보를 넣을지 여기서 정한다.
+                for (var i = 0; i < 10; i++) {                  // 10개
+                    // for (var i = 0; i < partial.length; i++) {
+                    var rowNum = 1;
+                    var randomId = partial[i];
+                    // console.log(randomId);
+                    $.ajax({
+                        type: "GET",
+                        url: "https://collectionapi.metmuseum.org/public/collection/v1/objects/" + randomId,
+                        success: function (arg) {
+                            var each = {};
+                            each.pieceNo = rowNum++;
+                            each.accessionYear = arg["accessionYear"];
+                            each.artistDisplayName = arg["artistDisplayName"];
+                            each.title = arg["title"].replaceAll("\"", "'");
+                            each.primaryImage = arg["primaryImage"];
+                            itemsArr.push(each);
+                            /* 뿌릴 사진들의 특정 상세정보를 담은 배열 */
+
+                            //localStorage.setItem("test", JSON.stringify(itemsArr)); //흠.. 거슬려
+                            //botTweetFactory();
+
+                            // 사용자에게 몇개를 보여줄지 정한다.
+                            if (itemsArr.length == 10) {
+                                localStorage.setItem("test", JSON.stringify(itemsArr)); //흠.. 거슬려
+                                botTweetFactory();
+                                return;
+                            }
+                        }
+                    });
+                }
+
+                // 위치 test중 - here it works.
+                $(".cl_iine").click(function () {
+                    $(this).effect("bounce", { times: 4 }, "slow"); 
+                }); //twitter2,twitter2_ippaann에도 붙여넣어져있는지 확인 - all set.
+            });
+
+            // 온로드이벤트로 실험중. // worked! yayyyyyyyyy
+            // var passedParameter = request.getParameter("q");
+            // $(v_searchInput).val(passedParameter);
+            // if (passedParameter == "미술봇") {
+            //     // $(v_searchInput).val(passedParameter);
+            //     // $(v_searchInput). // 코딩으로 엔터를 누를 수 있나? 밑에 아작스가 일어나도록 해야하는데. 잇다.. 근데 왜안돼 -> window.onload
+            //     var ev = $.Event("keypress");
+            //     ev.keyCode = 13;
+            //     $(v_searchInput).trigger(ev);
+            // }
+
+
+            // 검색할 키워드 search.html로 get방식 패스
+            // $(v_searchInput).keypress(function () {  // 이전코드
+            $(v_searchInput).keypress(function (e) {
+                // console.log(e);
+                // console.log("진짜 눌렸는지 체크"); // 안나왕 
+                // ㅠㅠkeypress이벤트자체가 안실행됑.. (var ev ~ console.log(여기찍힘))<-콘솔로해봤을땐 봇트윗 다 만들어져서 뜨는데..
+                // -> onload이벤트때 해주니 해결
+                e.preventDefault();
+                // if ($(this).val().length != 0 && event.keyCode == 13) { // 이전코드
+                if ($(this).val().length != 0 && e.keyCode == 13) {
+                    var userIdToPass = request.getParameter("nm_id");
+                    if ($(this).val() == "그림봇") {
+                        (function () {
+                            var slave = new XMLHttpRequest();
+                            slave.open("GET", "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=Auguste%20Renoir");
+
+                            slave.onreadystatechange = function () {
+                                if (slave.readyState == 4 && slave.status == 200) {
+                                    var idArr = $(JSON.parse(slave.responseText)).eq(1);
+                                    // console.log(idArr);
+
+                                    /*이미지가 있는 작품들 전체의 id들이 들어있는 배열. 원소 100개이상.*/
+                                    idArr = idArr["prevObject"][0]["objectIDs"];
+                                    // console.log(window.idArr);
+                                    window.idArr = idArr;
+
+                                    // 첫 화면에 뿌릴 사진의 아이디만 들어 있는 배열
+                                    window.partial = [];
+                                    for (var i = 0; i < 10; i++) {
+                                        partial.push(window.idArr[Math.floor(Math.random() * idArr.length)]);
+                                    }
+                                    // console.log(partial);
+                                    $buttons.eq(0).click(); //클릭시 일어날 이벤트는 이보다 더 위에서 정의.
+                                }
+                            };
+
+                            slave.send();
+                        })();
+                    } else {
+                        location.href = "search.html?nm_id=" + userIdToPass + "&q=" + $(this).val();
+                    }
+                }
+            });
+
+            // terminate: 아작스 통신
+
+
+
+            var v_downBelow = document.getElementById("id_downBelow");
+            var v_chottoLogout = document.getElementById("id_chottoLogout");
+
+            var isRun = false;
+
+            //downBelow버튼 누르면 계정선택창 디스플레이를 inline-block으로.
+            v_downBelow.addEventListener("click", function () {
+                if (!isRun) {
+                    v_chottoLogout.style.display = "inline-block";
+                    v_accountProfile.style.cursor = "default";
+                    isRun = true;
+                }
+            });
+
+            v_chottoLogout.addEventListener("mouseleave", function () {
+                v_chottoLogout.style.display = "none";
+                v_accountProfile.style.cursor = "pointer";
+                isRun = false;
+            });
+
+            var nowId = request.getParameter("nm_id");
+            $(".left").find("input").eq(1).css("color", "rgb(28,164,244)");
+
+            $(".left").find("input").eq(0).click(function () {
+                // 홈으로 이동 // twitter2,twitter2_ippaann에도 붙여넣을 것. <- 불필요하니 안넣겠음
+                // 추가사항: 홈으로 이동했을 때 내가 아까 썼던 트윗이 날라가있으면 안됑
+                // tweetFactory() 카피해서 myTweetFactory.js만들고, script src로 한줄 추가하기          //보류.
+
+                // var nowId = request.getParameter("nm_id");
+                if (nowId == "sudo") {
+                    location.href = "twitter2.html?nm_id=" + nowId;
+                } else {
+                    location.href = "twitter2_ippann.html?nm_id=" + nowId;
+                }
+
+            });
+
+            $(".left").find("input").eq(7).click(function () {
+                location.href = "plusAlpha.html?nm_id=" + nowId;
+            });
+
+            $(document).ready(function () {
+                tweetFactory();
+            });
+        </script>
+    </form>
+</body>
+
+</html>

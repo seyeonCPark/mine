@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./bot_tweetFactory.js"></script>
+    <title>/ index</title>
+    <style>
+        #id_disp {
+            height: 400px;
+            overflow-y: hidden;
+        }
+
+        input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="" id="id_btn">
+    <input type="button" value="ENTERANCE" id="id_btn2">
+    <input type="button" value="SHOW DETAIL">
+    <input type="button" value="자유게시판">
+    <div id="id_disp"></div><br>
+    <script>
+        var $disp = $("#id_disp");
+        var $buttons = $("input[type=button]");
+        $buttons.css({
+            "border": "none",
+            "background-color": "pink",
+            "cursor": "pointer"
+        });
+
+        var itemsArr = [];
+        var moreItemsArr = [];
+        window.addEventListener("DOMContentLoaded", function () {
+            (function () {
+                var slave = new XMLHttpRequest();
+                slave.open("GET", "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=Auguste%20Renoir");
+
+                slave.onreadystatechange = function () {
+                    if (slave.readyState == 4 && slave.status == 200) {
+                        var idArr = $(JSON.parse(slave.responseText)).eq(1);
+
+                        /*이미지가 있는 작품들 전체의 id들이 들어있는 배열. 원소 100개이상.*/
+                        window.idArr = idArr["prevObject"][0]["objectIDs"];
+
+                        // 첫 화면에 뿌릴 사진의 아이디만 들어 있는 배열
+                        window.partial = [];
+                        for (var i = 0; i < 12; i++) {
+                            partial.push(window.idArr[i]);
+                        }
+                        //시간 끌기 시도
+                        for (; "ysline";) {
+                            if (partial.length == 12) {
+                                break;
+                            }
+                        }
+                        $buttons.eq(0).click();
+                    }
+                };
+
+                slave.send();
+            })();
+
+        });
+
+        // 사진 가꼬오기
+
+        $buttons.hide();
+        $buttons.eq(0).on("click", function () {
+            for (var i = 0; i < partial.length; i++) {
+                var rowNum = 1;
+                var randomId = idArr[Math.floor(Math.random() * idArr.length)];
+                $.ajax({
+                    type: "GET",
+                    url: "https://collectionapi.metmuseum.org/public/collection/v1/objects/" + randomId,
+                    success: function (arg) {
+                        var each = {};
+                        each.pieceNo = rowNum++;
+                        each.accessionYear = arg["accessionYear"];
+                        each.artistDisplayName = arg["artistDisplayName"];
+                        each.title = arg["title"];
+                        each.primaryImage = arg["primaryImage"];
+                        itemsArr.push(each);
+                        /* 뿌릴 사진들(몇개안됨)의 특정 상세정보를 담은 배열 */
+                        localStorage.setItem("partial", JSON.stringify(itemsArr));
+                    }
+                });
+            }
+            // for (var i = 0; i < idArr.length; i++) {
+            //     var rowNum2 = 1;
+            //     $.ajax({
+            //         type: "GET",
+            //         url: "https://collectionapi.metmuseum.org/public/collection/v1/objects/" + idArr[i],
+            //         success: function (arg) {
+            //             var each = {};
+            //             each.pieceNo = rowNum2++;
+            //             each.accessionYear = arg["accessionYear"];
+            //             each.artistDisplayName = arg["artistDisplayName"];
+            //             each.title = arg["title"];
+            //             each.primaryImage = arg["primaryImage"];
+            //             moreItemsArr.push(each);
+            //             /* 처음에 가져온 100개 이상 모든 사진들의 특정 상세정보를 담은 배열 */
+            //             localStorage.setItem("all", JSON.stringify(moreItemsArr));
+            //         }
+            //     });
+            // }
+            // $(this).remove();
+
+            // $buttons.eq(1).show();
+            // console.log(itemsArr);
+        });
+
+        // 뿌리깅
+        $buttons.eq(1).click(function () {
+            $(this).remove();
+            for (var i = 0; i < itemsArr.length; i++) {
+                $eachImg = $("<img></img>").attr("src", itemsArr[i].primaryImage).css({ "width": "130px", "height": "130px" });
+                if (i % 4 == 0) {
+                    $disp.html($disp.html() + "<br>")
+                }
+                $disp.append($eachImg);
+            }
+            $buttons.eq(2).show();
+            $buttons.eq(3).show();
+        });
+    </script>
+</body>
+
+</html>

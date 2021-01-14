@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.googleapis.com/youtube/v3/search?key=AIzaSyAS7v7V82KRQtBN6EZ_fDsm25vKEvEniWI"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="query">
+    <input type="button" id="search-button" value="검생"><br>
+    <div id="search-container"></div>
+    <script>
+        // After the API loads, call a function to enable the search box.
+        function handleAPILoaded() {
+            $('#search-button').attr('disabled', false);
+        }
+
+        // Search for a specified string.
+        function search() {
+            var q = $('#query').val();
+            var request = gapi.client.youtube.search.list({
+                q: q,
+                part: 'snippet'
+            });
+
+            request.execute(function (response) {
+                var str = JSON.stringify(response.result);
+                $('#search-container').html('<pre>' + str + '</pre>');
+                alert(str);
+            });
+        }
+    </script>
+</body>
+
+</html>

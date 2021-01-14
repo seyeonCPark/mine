@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트위터</title>
+    <script src="./myJs.js"></script>
+    <style>
+        * {
+            text-align: center;
+        }
+
+        #container {
+            position: relative;
+            display: inline-block;
+            width: 1390px;
+            height: 640px;
+            top: -8px;
+            left: -8px;
+            overflow: hidden hidden;
+            background-color: rgba(63, 59, 59, 0.419);
+        }
+
+        #logoutbox {
+            position: relative;
+            left: -20px;
+            top: 160px;
+
+            display: inline-block;
+            width: 270px;
+            height: 240px;
+            background-color: white;
+            border-radius: 15px;
+            border: 1px solid transparent;
+        }
+
+        #logoutbox>:nth-child(1) {
+            transform: translateY(25px);
+        }
+
+        #logoutbox>:nth-child(2) {
+            width: 270px;
+            height: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            top: 20px;
+            transform: translateY(30px);
+        }
+
+        #beg {
+            transform: translateY(-10px);
+            width: 270px;
+            height: 150px;
+            font-size: 14px;
+            color: rgb(156, 156, 156);
+        }
+
+        #nahh {
+            width: 100px;
+            height: 35px;
+            border-radius: 17px;
+            background-color: rgb(230, 236, 240);
+            border: none;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 13px;
+            transform: translateY(-105px);
+        }
+
+        #bye {
+            width: 110px;
+            height: 35px;
+            border-radius: 17px;
+            background-color: rgb(29, 161, 242);
+            border: none;
+            display: inline-block;
+            color: white;
+            font-weight: bold;
+            font-size: 13px;
+            transform: translateY(-105px);
+        }
+
+        button:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="logoutbox">
+            <img src="./images/tinyBird.png" width="40px" height="40px">
+            <div>트위터에서 로그아웃할까요?</div><br>
+            <div id="beg">언제든지 다시 로그인할 수 있습니다. 계<br>정을 전환하려는 경우 이미 존재하는 계<br>정을 추가하면 전환할 수 있습니다.</div><br>
+            <button id="nahh" style="cursor: pointer;">취소</button>
+            <button id="bye" style="cursor: pointer;">로그아웃</button>
+        </div>
+    </div>
+
+    <script>
+        var nowId = request.getParameter("nm_id");
+        var v_bye = document.getElementById("bye");
+        v_bye.onclick = function () {
+            location.href = "twitter.html";
+        };
+
+        var v_nahh = document.getElementById("nahh");
+        nahh.onclick = function () {
+            if (nowId != "sudo") {
+                location.href = "twitter2_ippann.html?nm_id=" + nowId;
+            } else {
+                location.href = "twitter2.html?nm_id=" + nowId;
+            }
+        }
+    </script>
+</body>
+
+</html>

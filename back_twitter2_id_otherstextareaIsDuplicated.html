@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./myJs.js"></script>
+    <link rel="stylesheet" href="./twitter2style.css">
+    <link rel="stylesheet" href="./cssforTheSelement.css">
+    <script src="./tweetFactory.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>홈 / 트위터</title>
+</head>
+
+<body>
+    <form action="" method="get">
+        <div class="container">
+            <div class="left">
+                <img src="./images/tinyBird.png" width="35px" height="35px" alt="">
+                <input type="button" value="&nbsp&nbsp&nbsp홈" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp탐색하기" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp알림" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp쪽지" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp북마크" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp리스트" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp프로필" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input type="button" value="&nbsp&nbsp&nbsp더 보기" style="cursor:pointer;" onmouseout="f_out(this)"
+                    onmouseover="f_over(this)"><br>
+                <input id="btn1_left" type="button" value="트윗" style="cursor:pointer;"><br>
+                <div id="id_chottoLogout"></div>
+                <div id="id_accountProfile">
+                    <img src="" width="50px" height="50px" alt="">
+                    <input type="button" id="id_downBelow"
+                        style="background-image: url(./images/downBelow.png); background-size:contain; cursor: pointer;">
+                </div>
+
+            </div>
+            <div class="center">
+                <div class="home" style="position: fixed;">&nbsp&nbsp홈</div>
+                <div id="id_tweetInput" class="searchTaishouMyTweet">
+                    <img src="">
+                    <textarea id="id_textArea" cols="15" rows="1" placeholder="무슨 일이 일어나고 있나요?"
+                        style="resize: none;"></textarea>
+                    <div id="id_showSelectedPhoto"></div>
+                    <input type="file" id="id_tempuFile" multiple style="display:none;" accept=".jpg, .jpeg, .png">
+                    <input type="file" id="id_tempuGifFile" multiple style="display:none;" accept=".gif">
+                    <input class="tempu" type="button" style="background-image: url(./images/tempu1_transparent.png);"
+                        onmouseout="f_out(this)" onmouseover="f_over(this)">
+                    <input class="tempu" type="button" style="background-image: url(./images/tempu2_transparent.png);"
+                        onmouseout="f_out(this)" onmouseover="f_over(this)">
+                    <input class="tempu" type="button" style="background-image: url(./images/tempu3_transparent.png);"
+                        onmouseout="f_out(this)" onmouseover="f_over(this)">
+                    <input class="tempu" type="button" style="background-image: url(./images/tempu4_transparent.png);"
+                        onmouseout="f_out(this)" onmouseover="f_over(this)">
+                    <input class="tempu" type="button" style="background-image: url(./images/tempu5_transparent.png);"
+                        onmouseout="f_out(this)" onmouseover="f_over(this)">
+                    <!-- <input class="cl_submit" type="button" value="트윗" disabled style="cursor:text;"> -->
+                    <button class="cl_submit" type="button" disabled style="cursor:text;">트윗</button>
+                </div>
+                <div id="id_feedForMe">
+                    <!-- a tweet -->
+                    <div id="id_othersTweet" class="notMyTweet searchTaishouOthers">
+                        <img src="./images/gun.png" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>아니 장난이야 (사실 장난 아니야)</textarea>
+                        <div
+                            style="width: 100px; height: 15px; position: absolute; left: 70px; top: 13px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            그사람</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 115px; top: 12px; color: gray; font-size: 13px; display: inline-block;">
+                            @mrs.yum &nbsp&nbsp&nbsp&nbsp9분</div>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 72px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 72px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 72px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 72px; left: 320px;">
+                    </div>
+                    <!-- a tweet -->
+                    <div id="id_othersTweet" class="notMyTweet searchTaishouOthers">
+                        <img src="./images/gun.png" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>FUCK YOU!!!!!</textarea>
+                        <div
+                            style="width: 100px; height: 15px; position: absolute; left: 70px; top: 13px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            그사람</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 115px; top: 12px; color: gray; font-size: 13px; display: inline-block;">
+                            @mr.yum &nbsp&nbsp&nbsp&nbsp9분</div>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 72px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 72px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 72px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 72px; left: 320px;">
+                    </div>
+                    <!-- a tweet with a photo -->
+                    <div id="id_othersPhotoTweet" class="notMyTweet searchTaishouOthers"
+                        style="border:0.5px solid rgba(63, 59, 59, 0.219);">
+                        <img src="./images/ooo.jpg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;" readonly>사랑</textarea>
+                        <div
+                            style="width: 100px; height: 15px; position: absolute; left: 70px; top: 11px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            ooo</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 100px; top: 10px; color: gray; font-size: 13px; display: inline-block;">
+                            @3__ooos &nbsp&nbsp&nbsp&nbsp11분</div>
+                        <img src="./images/IMG_6900.JPG" width="300px" height="300px"
+                            style="position: absolute; left: 70px; top: 70px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 385px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 385px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 385px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 385px; left: 320px;">
+                    </div>
+                    <!-- a tweet with a photo -->
+                    <div id="id_othersPhotoTweet2" class="notMyTweet searchTaishouOthers">
+                        <img src="./images/yohei.png" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>どんな状況だったか全く思い出せない一枚</textarea>
+                        <div
+                            style="width: 100px; height: 15px; position: absolute; left: 70px; top: 11px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            Yohei Suzuki</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 155px; top: 10px; color: gray; font-size: 13px; display: inline-block;">
+                            @yomilyforever &nbsp&nbsp&nbsp&nbsp18분</div>
+                        <img src="./images/IMG_1586.JPG" width="400px" height="200px"
+                            style="position: absolute; left: 70px; top: 70px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 280px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 280px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 280px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 280px; left: 320px;">
+                    </div>
+                    <!-- a tweet -->
+                    <div id="id_othersTweet" class="notMyTweet searchTaishouOthers">
+                        <img src="./images/mikan.jpeg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>아망했다지금일어남.. 상담 각</textarea>
+                        <div
+                            style="width: 100px; height: 15px; position: absolute; left: 70px; top: 13px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            비욘세</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 115px; top: 12px; color: gray; font-size: 13px; display: inline-block;">
+                            @yonseiKim &nbsp&nbsp&nbsp&nbsp22분</div>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 72px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 72px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 72px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 72px; left: 320px;">
+                    </div>
+                    <!-- a tweet with a photo -->
+                    <div id="id_othersPhotoTweet2" class="notMyTweet searchTaishouOthers">
+                        <img src="./images/jin.jpg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>수업하기 싫다..</textarea>
+                        <div
+                            style="width: 100px; height: 15px; position: absolute; left: 70px; top: 11px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            진형진형</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 130px; top: 10px; color: gray; font-size: 13px; display: inline-block;">
+                            @naver &nbsp&nbsp&nbsp&nbsp26분</div>
+                        <img src="./images/sponge.jpg" width="330px" height="200px"
+                            style="position: absolute; left: 70px; top: 70px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 280px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 280px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 280px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 280px; left: 320px;">
+                    </div>
+                    <!-- a tweet with a photo -->
+                    <div id="id_othersPhotoTweet2" class="notMyTweet searchTaishouOthers">
+                        <img src="./images/adamo.jpg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>we LOVE keroro</textarea>
+                        <div
+                            style="width: 100px; height: 15px; position: absolute; left: 70px; top: 11px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            Adamo</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 120px; top: 10px; color: gray; font-size: 13px; display: inline-block;">
+                            @babyslothy90 &nbsp&nbsp&nbsp&nbsp27분</div>
+                        <img src="./images/IMG_9133.jpg" width="200px" height="200px"
+                            style="position: absolute; left: 70px; top: 70px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 280px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 280px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 280px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 280px; left: 320px;">
+                    </div>
+                    <!-- a tweet with a photo -->
+                    <div id="id_othersPhotoTweet" class="notMyTweet searchTaishouOthers" style="height: 320px;">
+                        <img src="./images/elmo.jpg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>와플 너무마쉿어</textarea>
+                        <div
+                            style="width: 100px; height: 15px; position: absolute; left: 70px; top: 11px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            쩝쩝박사 박세진</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 170px; top: 10px; color: gray; font-size: 13px; display: inline-block;">
+                            @jjubjjub_Phd &nbsp&nbsp&nbsp&nbsp31분</div>
+                        <img src="./images/waffle.JPG" width="180px" height="180px"
+                            style="position: absolute; left: 260px; top: 70px; display: inline-block;">
+                        <img src="./images/waffle2.JPG" width="180px" height="180px"
+                            style="position: absolute; left: 70px; top: 70px; display: inline-block;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 280px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 280px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 280px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 280px; left: 320px;">
+                    </div>
+                    <!-- a tweet with a video -->
+                    <div id="id_othersPhotoTweet" class="notMyTweet searchTaishouOthers" style="height: 335px;">
+                        <img src="./images/272.png" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>난 로제가 제일 좋아잉</textarea>
+                        <div
+                            style="width: 100px; height: 15px; position: absolute; left: 70px; top: 11px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            정보철희기사</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 155px; top: 10px; color: gray; font-size: 13px; display: inline-block;">
+                            @eggmoney &nbsp&nbsp&nbsp&nbsp33분</div>
+                        <video id="id_video" src="videos/bp.mp4" controlslist="nodownload" width="400px"
+                            style="position: absolute; left: 70px; top: 70px; display: inline-block;">
+                        </video>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 300px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 300px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 300px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 300px; left: 320px;">
+                    </div>
+                    <!-- a tweet -->
+                    <div id="id_othersTweet" class="notMyTweet searchTaishouOthers">
+                        <img src="./images/babocookie.jpg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>..그런데 불행하게도..(이하생략)</textarea>
+                        <div
+                            style="width: 130px; height: 15px; position: absolute; left: 70px; top: 13px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            맛있는조그마한쿠키</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 193px; top: 12px; color: gray; font-size: 13px; display: inline-block;">
+                            @babocookie &nbsp&nbsp&nbsp&nbsp38분</div>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 72px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 72px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 72px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 72px; left: 320px;">
+                    </div>
+                    <!-- a tweet -->
+                    <div id="id_othersTweet" class="notMyTweet searchTaishouOthers">
+                        <img src="./images/son.jpg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>아 저희도 액자 뭔지 알아요...</textarea>
+                        <div
+                            style="width: 130px; height: 15px; position: absolute; left: 70px; top: 13px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            엉뚱이</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 115px; top: 12px; color: gray; font-size: 13px; display: inline-block;">
+                            @yunjae &nbsp&nbsp&nbsp&nbsp42분</div>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 72px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 72px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 72px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 72px; left: 320px;">
+                    </div>
+                    <!-- a tweet -->
+                    <div id="id_othersTweet" class="notMyTweet searchTaishouOthers" style="height:140px;">
+                        <img src="./images/chopper.jpg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="3" style="resize: none;"
+                            readonly>여러분들 '액자'가 뭔지 알아? 아 알아? ...나만 아는 줄 알았네</textarea>
+                        <div
+                            style="width: 130px; height: 15px; position: absolute; left: 70px; top: 13px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            초코정환</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 130px; top: 12px; color: gray; font-size: 13px; display: inline-block;">
+                            @chopper_kim &nbsp&nbsp&nbsp&nbsp40분</div>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 110px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 110px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 110px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 110px; left: 320px;">
+                    </div>
+                    <!-- a tweet -->
+                    <div id="id_othersTweet" class="notMyTweet searchTaishouOthers">
+                        <img src="./images/frontstreet.jpg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>그 때 정말 여러가지 흥 망 성 쇄를.. 봤죠.</textarea>
+                        <div
+                            style="width: 130px; height: 15px; position: absolute; left: 70px; top: 13px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            앞길뒷길</div>
+                        <div
+                            style="width: 180px; height: 15px; position: absolute; left: 127px; top: 12px; color: gray; font-size: 13px; display: inline-block;">
+                            @database_schema &nbsp&nbsp&nbsp&nbsp1일전</div>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 72px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 72px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 72px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 72px; left: 320px;">
+                    </div>
+                    <!-- a tweet -->
+                    <div id="id_othersTweet" class="notMyTweet searchTaishouOthers">
+                        <img src="./images/frontstreet.jpg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>제가... 요식업을 했었잖아요.</textarea>
+                        <div
+                            style="width: 130px; height: 15px; position: absolute; left: 70px; top: 13px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            앞길뒷길</div>
+                        <div
+                            style="width: 180px; height: 15px; position: absolute; left: 127px; top: 12px; color: gray; font-size: 13px; display: inline-block;">
+                            @database_schema &nbsp&nbsp&nbsp&nbsp1일전</div>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 72px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 72px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 72px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 72px; left: 320px;">
+                    </div>
+                    <!-- a tweet -->
+                    <div id="id_othersTweet" class="notMyTweet searchTaishouOthers">
+                        <img src="./images/272.png" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>건쭈쭈! 역시 잘한다니깡</textarea>
+                        <div
+                            style="width: 130px; height: 15px; position: absolute; left: 70px; top: 13px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            정보철희기사</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 155px; top: 12px; color: gray; font-size: 13px; display: inline-block;">
+                            @eggmoney &nbsp&nbsp&nbsp&nbsp1일전</div>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 72px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 72px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 72px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 72px; left: 320px;">
+                    </div>
+                    <!-- a tweet -->
+                    <div id="id_othersTweet" class="notMyTweet searchTaishouOthers">
+                        <img src="./images/hire.jpg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>아 건주!! 했어? 보내보내보내보내</textarea>
+                        <div
+                            style="width: 130px; height: 15px; position: absolute; left: 70px; top: 13px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            고용주</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 115px; top: 12px; color: gray; font-size: 13px; display: inline-block;">
+                            @GoYongsu &nbsp&nbsp&nbsp&nbsp1일 전</div>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 72px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 72px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 72px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 72px; left: 320px;">
+                    </div>
+                    <!-- a tweet -->
+                    <div id="id_othersTweet" class="notMyTweet searchTaishouOthers" style="height:140px;">
+                        <img src="./images/young.jpg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="3" style="resize: none;"
+                            readonly>쌤 저좀 그만 괴롭히세요 ㅎㅎㅎ 저는 전공자가 아니예요 ㅎㅎㅎ</textarea>
+                        <div
+                            style="width: 130px; height: 15px; position: absolute; left: 70px; top: 13px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            jiney</div>
+                        <div
+                            style="width: 270px; height: 15px; position: absolute; left: 110px; top: 12px; color: gray; font-size: 13px; display: inline-block;">
+                            @I_do_not_major_in_programming &nbsp&nbsp&nbsp&nbsp1일 전</div>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 110px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 110px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 110px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 110px; left: 320px;">
+                    </div>
+                    <!-- a tweet -->
+                    <div id="id_othersTweet" class="notMyTweet searchTaishouOthers" style="height:140px;">
+                        <img src="./images/272.png" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="3" style="resize: none;"
+                            readonly>프로그래밍할 땡 순서를 잘 생각해야 됑..&nbsp 시퀀셜하게, 시리얼하게 말양</textarea>
+                        <div
+                            style="width: 130px; height: 15px; position: absolute; left: 70px; top: 13px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            정보철희기사</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 155px; top: 12px; color: gray; font-size: 13px; display: inline-block;">
+                            @eggmoney&nbsp&nbsp&nbsp&nbsp1일 전</div>
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 110px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 110px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 110px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 110px; left: 320px;">
+                    </div>
+                    <!-- a tweet with a photo -->
+                    <div id="id_othersPhotoTweet2" class="notMyTweet searchTaishouOthers" style="height:510px">
+                        <img src="./images/papa.jpg" width="50px" height="50px"
+                            style="border-radius: 25px; position: absolute;" alt="">
+                        <textarea id="id_othersTextArea" cols="15" rows="1" style="resize: none;"
+                            readonly>우리 애기 이빨 4개 났다</textarea>
+                        <div
+                            style="width: 100px; height: 15px; position: absolute; left: 70px; top: 11px; display: inline-block; font-size: 13px; font-weight: bold;">
+                            재룡아빠</div>
+                        <div
+                            style="width: 150px; height: 15px; position: absolute; left: 130px; top: 10px; color: gray; font-size: 13px; display: inline-block;">
+                            @simpapa &nbsp&nbsp&nbsp&nbsp1일 전</div>
+                        <img src="./images/baby.JPG" width="200px" height="400px"
+                            style="position: absolute; left: 70px; top: 70px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/mention.png); top: 475px; left: 50px; background-color: transparent; border: 1px solid white; color: black;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/rt.png); top: 475px; left: 140px;">
+                        <input type="button" class="cl_reaction cl_iine"
+                            style="background-image: url(./images/heart.png); top: 475px; left: 230px;">
+                        <input type="button" class="cl_reaction"
+                            style="background-image: url(./images/share.png); top: 475px; left: 320px;">
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div id="id_search">
+                    <img src="./images/magnifyingGlass.png">
+                    <input id="id_searchInput" type="text" placeholder="트위터 검색" autocomplete="off">
+                    <div id="id_chottoShow">사용자, 화제, 키워드를 검색해보세요</div>
+                </div>
+                <div id="id_recommendation">
+                    <div style="position: absolute; display: block; width: 310px;
+                                height:30px; line-height:25px; top: 8px; font-size: 18px; font-weight: bold;">
+                        &nbsp&nbsp나를 위한 트렌드
+                        <hr>
+                    </div>
+                    <img id="id_settingIcon" src="./images/setting.png"
+                        style="background-color: transparent; cursor:pointer; width: 25px; height: 25px; border-radius: 12.5px; border: none; left: 275px; top: 11px; position: absolute; display: inline-block;">
+                    <div class="cl_recKids" style="height:50px; top: 45px; line-height: 50px;">
+                        &nbsp&nbsp코로롱바이러수&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp-대한민국에서 트렌드중
+                        <hr>
+                    </div>
+                    <div class="cl_recKids" style="height:50px; top: 100px; line-height: 50px;">&nbsp&nbsp바보쿠키
+                        <hr>
+                    </div>
+                    <div class="cl_recKids" style="height:50px; top: 155px; line-height: 50px;">&nbsp&nbspabc초콜렛 많은 시간대
+                        <hr>
+                    </div>
+                    <div class="cl_recKids" style="height:50px; top: 215px; line-height: 50px;">&nbsp&nbsp7월반 파티투나잇
+                        <hr>
+                    </div>
+                    <div class="cl_recKids" style="height:50px; top: 275px; line-height: 50px;">&nbsp&nbsp호진 vs 세연 치열한
+                        겨루기&nbsp&nbsp&nbsp&nbsp-세연승리예상
+                        <hr>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script>
+            // 맨처음에 해줘야하는 것은 뭘까?
+            var tableName = "Twitterians";
+            var users = JSON.parse(localStorage.getItem(tableName));
+            renewSearchTaishou();
+
+            var nowId = request.getParameter("nm_id");
+
+            for (var i = 0; i < users.length; i++) {
+                if (nowId == users[i].eId) {
+                    var nowNickname = users[i].eNickname;
+                    break;
+                }
+            }
+
+
+            // 새 트윗 작성시마다 다시 setItem해야하므로 함수로 만들겠옹
+            function renewSearchTaishou() {
+                var users = JSON.parse(localStorage.getItem(tableName));
+                $allTweetsByOthers = $(".searchTaishouOthers");
+                var localArr = [];
+                // 내용검색을 위해 모든 트윗의 작성자닉네임, 작성자 아이디, textArea의 innerHTML을 json으로 묶어 배열에 넣고, localStorage에.
+                for (var i = 0; i < $allTweetsByOthers.length; i++) {
+                    var $eachTweet = $allTweetsByOthers.eq(i);
+                    var each = {};
+                    // console.log($eachTweet);
+
+                    // 컬럼 순서 바꿀까?
+                    each.eImg = $eachTweet.children().eq(0).attr("src");
+                    each.eTextarea = $eachTweet.children().eq(1).val();
+                    each.eId = $eachTweet.children().eq(3).html();
+                    each.eNickname = $eachTweet.children().eq(2).html();
+
+                    // 쓸데없는 공백제겅
+                    each.eId = each.eId.replace(/\s+/, " ").replace(/&nbsp;/g, "");
+                    each.eNickname = each.eNickname.trim();
+                    localArr.push(each);
+                }
+                $allTweetsByMe = $(".searchTaishouMyTweet");
+                // console.log($allTweetsByMe);
+                for (var i = 0; i < $allTweetsByMe.length; i++) {
+                    var $eachTweet = $allTweetsByMe.eq(i);
+                    var each = {};
+                    each.eImg = $eachTweet.children().eq(0).attr("src");
+                    each.eTextarea = $eachTweet.children().eq(1).val();
+                    // 매번 다음 트윗작성시마다 id, nickname이 날라가는문제 발생(마지막으로 작성한 트윗의 닉,아이디만 제대로 남고) - 해결 ㅠ
+                    each.eId = request.getParameter("nm_id");
+                    console.log(each.eId);
+                    for (var j = 0; j < users.length; j++) {
+                        if (users[j].eId == each.eId) {
+                            each.eNickname = users[j].eNickname;
+                            break;
+                        }
+                    }
+                    localArr.push(each);
+                }
+                // localArr.push(each);
+
+                var localKey = "FixedTweetsInfo";
+                localStorage.setItem(localKey, JSON.stringify(localArr));
+            }
+
+
+
+            //철희쌤 트윗 비디오 클릭으로 재생/정지 토글
+            var v_video = document.getElementById("id_video");
+            v_video.addEventListener("click", f_play);
+            var isPlaying = false;
+            function f_play() {
+                if (!isPlaying) {
+                    v_video.play();
+                    isPlaying = true;
+                } else {
+                    v_video.pause();
+                    isPlaying = false;
+                }
+            }
+
+            //right setting icon 색변경
+            var v_settingIcon = document.getElementById("id_settingIcon");
+            v_settingIcon.onmouseover = function () {
+                this.style.backgroundColor = "rgba(133, 213, 252,0.282)";
+            };
+            v_settingIcon.onmouseout = function () {
+                this.style.backgroundColor = "transparent";
+            };
+
+            //right 트렌드 마우스오버/아웃 색변경
+            var v_recKids = document.getElementsByClassName("cl_recKids");
+            for (var i = 0; i < v_recKids.length; i++) {
+                v_recKids[i].addEventListener("mouseover", function () {
+                    this.style.backgroundColor = "rgb(233, 238, 242)";
+                });
+                v_recKids[i].addEventListener("mouseout", function () {
+                    this.style.backgroundColor = "transparent";
+                });
+            }
+
+
+            var cl_left = document.querySelectorAll(".left")[0];
+            var apart = 10;
+            var apartTempu = 10;
+
+            var v_tweetInput = document.getElementById("id_tweetInput");
+
+            // 트윗인풋 내 첨부버튼 간격
+            for (var i = 0; i < v_tweetInput.children.length; i++) {
+                if (v_tweetInput.children[i].class == "tempu") {
+                    v_tweetInput.children[i].style.left = "0px";
+                }
+                v_tweetInput.children[i].style.left = parseInt(v_tweetInput.children[i].style.left) + apartTempu + "px";
+                apartTempu += 15;
+            }
+
+
+            // 왼쪽 버튼들 상하간격 주기
+            for (var i = 0; i < cl_left.children.length; i++) {
+                if (cl_left.children[i].type == "button") {
+                    cl_left.children[i].style.top = "30px";
+                }
+                cl_left.children[i].style.top = parseInt(cl_left.children[i].style.top) + apart + "px";
+                apart += 25;
+            }
+
+
+            // 마우스오버, 아웃 시 버튼 색 블루로 변경
+            function f_over(arg) {
+                arg.style.backgroundColor = "rgba(133, 213, 252,0.282)";
+                arg.style.border = "1px solid rgba(133, 213, 252,0.282)";
+                arg.style.color = "rgb(28, 164, 244)";
+            }
+            function f_out(arg) {
+                arg.style.backgroundColor = "transparent";
+                arg.style.border = "1px solid transparent";
+                arg.style.color = "black";
+            }
+
+            // 심어놓은 트윗들 안에 있는 버튼에 다 이벤트 걺.
+            var v_reactionBtnsInTweets = document.getElementsByClassName("cl_reaction");
+            for (var z = 0; z < v_reactionBtnsInTweets.length; z++) {
+                v_reactionBtnsInTweets[z].addEventListener("mouseover", f_over.bind(null, v_reactionBtnsInTweets[z]));
+                v_reactionBtnsInTweets[z].addEventListener("mouseout", f_out.bind(null, v_reactionBtnsInTweets[z]));
+            }
+
+
+
+            // var v_textArea = document.getElementsByName("nm_TextArea")[0];
+            //값 안 보낼거라서 name없애고 아이디 줬음.
+
+            var v_textArea = document.getElementById("id_textArea");
+
+            var v_btn1_left = document.getElementById("btn1_left");
+            v_btn1_left.onclick = function () {
+                v_textArea.focus(); //머 별 건 아니고 left버튼들 중 트윗버튼 누르면.. 트윗인풋에 포커스.
+            }
+
+
+            var v_submitBtns = document.getElementsByClassName("cl_submit");
+            var v_tweethagi = v_submitBtns[0]; //center 트윗작성 버튼
+
+            var v_showSelectedPhoto = document.getElementById("id_showSelectedPhoto"); //사진 보여줄 곳 (div) -hidden
+            v_textArea.addEventListener("keyup", nullChecker);
+
+            function nullChecker() {
+                //console.log(v_showSelectedPhoto.children.length);
+                if (v_showSelectedPhoto.children.length != 0 || v_textArea.value.length > 0) {
+                    v_tweethagi.disabled = false;
+                    v_tweethagi.style.cursor = "pointer";
+                    return;
+                }
+                if (v_showSelectedPhoto.innerHTML == "" && v_textArea.value.length == 0) {
+                    v_tweethagi.disabled = true;
+                    v_tweethagi.style.cursor = "text";
+                    return;
+                }
+            }
+
+
+            //트윗작성 기능 완성.
+            var v_feedForMe = document.getElementById("id_feedForMe");
+            v_tweethagi.onclick = function () {
+                renewSearchTaishou();
+                var v_myTweet = v_tweetInput.cloneNode(true);
+                // if (!v_tweetInput.children[2].children[0]) {
+                if (v_tweetInput.children[2].children.length == 0) {
+                    v_textArea.value = "";  // 사진 첨부 안했다면 트윗textArea만 클리엉
+                    v_myTweet.style.height = "100px";
+
+                } else {
+                    v_textArea.value = "";
+                    for (var j = 0, photoNum = v_showSelectedPhoto.children.length; j < photoNum; j++) {  //조건식의 기준값이 변동되지않도록 초기화해서 고정시켰기 때문에 works!
+                        v_showSelectedPhoto.removeChild(v_showSelectedPhoto.children[0]);
+                    }
+                    v_myTweet.style.height = "210px"; //사진 첨부했다면 트윗 height가 더 길어야함
+
+                }
+                $(v_myTweet).attr("id", "id_myTweet").attr("class", "searchTaishou searchTaishouMyTweet").css({
+                    "width": "497px",
+                    "border": "0.5px solid rgba(63, 59, 59, 0.219)",
+                    "transform": "translateX(-1px)"
+                });
+                v_myTweet.children[0].style.width = "50px";
+                v_myTweet.children[0].style.height = "50px";
+                v_myTweet.children[0].style.borderRadius = "25px";
+                v_myTweet.children[0].style.position = "absolute";
+
+                v_myTweet.children[1].style.position = "absolute";
+                v_myTweet.children[1].style.left = "70px";
+                v_myTweet.children[1].style.top = "23px";
+                v_myTweet.children[1].style.color = "black";
+                v_myTweet.children[1].readOnly = "true";
+
+                //텍스트 없이 사진만 첨부했을 경우, value에 placeholder값을 그대로 가져와버리므로 공백 넣어줬음.
+                if (!v_myTweet.children[1].value) {
+                    v_myTweet.children[1].value = " ";
+                }
+
+                //v_tweetInput을 복제하는데 필요없는 첨부버튼들 등등이 따라오니까 지우기
+                for (var i = 5; i < 11; i++) {
+                    v_myTweet.removeChild(v_myTweet.children[5]);
+                }
+
+                //프사 옆에 닉네임, 아이디 띄우기
+                var $v_nickname = $("<div></div>");
+                $v_nickname.css({
+                    "width": "100px",
+                    "height": "15px",
+                    "position": "absolute",
+                    "left": "70px",
+                    "top": "11px",
+                    "display": "inline-block",
+                    "fontSize": "13px",
+                    "fontWeight": "bold"
+                });
+                $v_nickname.html(nowNickname);
+                // $v_nickname.html("아깨로");
+
+                var $v_userId = $("<div></div>");
+                $v_userId.css({
+                    "width": "150px",
+                    "height": "15px",
+                    "position": "absolute",
+                    "left": "140px",
+                    "top": "10px",
+                    "color": "gray",
+                    "fontSize": "13px",
+                    "display": "inline-block"
+                });
+                $v_userId.html("@" + nowId + "&nbsp&nbsp&nbsp&nbsp방금 전");
+                $(v_myTweet).append($v_nickname);
+                $(v_myTweet).append($v_userId);
+
+                //답글달기, 리트윗, 하트찍기 아이콘 구해서 붙이고 밑의 어펜드차일드. (完 , 아이콘 중 이이네만 기능 있음)
+                var apartReaction = 10;
+                var v_reactionBtnsNum = 4;
+                var v_liked = false;
+                var v_reactionPhotosArr = ["url(./images/mention.png)", "url(./images/rt.png)", "url(./images/heart.png)", "url(./images/share.png)"];
+                for (var i = 0; i < v_reactionBtnsNum; i++) {
+                    var v_reactionBtn = document.createElement("input");
+                    v_reactionBtn.setAttribute("type", "button");
+                    if (i == 2) {
+                        v_reactionBtn.setAttribute("class", "cl_reaction cl_iine");
+                        v_reactionBtn.addEventListener("click", function () {
+                            if (!v_liked) {
+                                this.style.backgroundImage = "url(./images/heartful.png)";
+                                v_liked = true;
+                                return;
+                            } else {
+                                this.style.backgroundImage = "url(./images/heart.png)";
+                                v_liked = false;
+                            }
+                        });
+                    } else {
+                        v_reactionBtn.setAttribute("class", "cl_reaction");
+                    }
+
+                    v_reactionBtn.style.backgroundImage = v_reactionPhotosArr[i];
+                    if (!v_myTweet.children[2].innerHTML) {
+                        v_reactionBtn.style.top = "72px";
+                    } else {
+                        v_reactionBtn.style.top = "180px";
+                    }
+                    v_reactionBtn.style.left = "40px";
+                    v_reactionBtn.style.left = parseInt(v_reactionBtn.style.left) + apartReaction + "px";
+                    apartReaction += 90;
+                    v_reactionBtn.addEventListener("mouseover", f_over.bind(null, v_reactionBtn));
+                    v_reactionBtn.addEventListener("mouseout", f_out.bind(null, v_reactionBtn));
+                    v_myTweet.appendChild(v_reactionBtn);
+                }
+
+                // v_feedForMe.appendChild(v_myTweet);
+                $("#id_feedForMe").prepend(v_myTweet);
+
+                //사진 첨부했을 경우 v_tweetInput의 사이즈를 늘어나게 했었으므로.. 트윗하고 나면 원래 사이즈로 되돌려줘야쥥
+                v_tweetInput.style.height
+                styleEasyAccess("button.cl_submit").top = "40px";
+                styleEasyAccess(".tempu").top = "54px";
+                styleEasyAccess("#id_tweetInput").height = "120px";
+
+                nullChecker();
+            };
+
+            var v_liked = false;
+            //이이네 버튼 누르면 빨간 하트로 이미지 바꿔치기 - ok
+            var iineBtns = document.getElementsByClassName("cl_iine");
+            for (var i = 0; i < iineBtns.length; i++) {
+                iineBtns[i].addEventListener("click", function () {
+                    if (!v_liked) {
+                        this.style.backgroundImage = "url(./images/heartful.png)";
+                        v_liked = true;
+                        return;
+                    }
+                    this.style.backgroundImage = "url(./images/heart.png)";
+                    v_liked = false;
+                });
+            }
+
+
+
+            //********tempu클래스 버튼들 기능 구현**********
+            var v_tempuBtns = document.getElementsByClassName("tempu");
+
+            //1. tempu1-사진 첨부. (完)
+            var v_tempuFile = document.getElementById("id_tempuFile"); //input type file
+            v_tempuBtns[0].addEventListener("click", function () {
+                v_tempuFile.click();
+                // v_showSelectedPhoto.innerHTML = "";
+                v_tempuFile.addEventListener("change", function () {
+                    var v_selectedFiles = v_tempuFile.files;
+                    // console.log(v_selectedFiles);
+                    for (var i = 0; i < v_selectedFiles.length; i++) {
+                        read1file(v_selectedFiles[i]);
+                    }
+                });
+            });
+
+            function read1file(arg) {
+                var slave = new FileReader();
+                slave.readAsDataURL(arg);
+                slave.onload = function () {
+                    var v_selectedPhoto = document.createElement("img");
+                    v_selectedPhoto.setAttribute("id", "id_selectedPhoto");
+                    v_selectedPhoto.src = slave.result;
+                    v_selectedPhoto.setAttribute("width", "100px");
+                    v_selectedPhoto.setAttribute("height", "100px");
+                    styleEasyAccess("#id_showSelectedPhoto").display = "inline-block";
+                    styleEasyAccess("#id_showSelectedPhoto").border = "none";
+                    v_showSelectedPhoto.appendChild(v_selectedPhoto);
+                    nullChecker();
+                };
+                //사진 보여주고 버튼은 아래로 빠지도록.
+                styleEasyAccess("button.cl_submit").top = "155px";
+                styleEasyAccess(".tempu").top = "170px";
+                styleEasyAccess("#id_tweetInput").height = "230px";
+            }
+
+
+            //2. tempu2-gif 첨부 (完)
+
+            var v_tempuGifFile = document.getElementById("id_tempuGifFile"); //accepts .gif only
+            v_tempuBtns[1].addEventListener("click", function () {
+                v_tempuGifFile.click();
+                v_tempuGifFile.addEventListener("change", function () {
+                    var v_selectedFiles = v_tempuGifFile.files;
+                    for (var i = 0; i < v_selectedFiles.length; i++) {
+                        read1file(v_selectedFiles[i]);
+                    }
+                });
+            });
+
+
+
+            // onload시 왼쪽 하단 미니 프로필에 닉네임(cl_profileId 자식3), @아이디(자식4)
+
+            var v_accountProfile = document.querySelector("#id_accountProfile");
+            v_accountProfile.addEventListener("mouseover", f_over.bind(null, v_accountProfile));
+            v_accountProfile.addEventListener("mouseout", f_out.bind(null, v_accountProfile));
+
+            window.onload = function () {
+                // superUser
+
+                renewSearchTaishou();
+                var tableName = "Twitterians";
+                var superuser = { eId: "sudo", ePw: "1004", eNickname: "superuser", eImg: "images/sudo.jpg" };
+                var users = JSON.parse(localStorage.getItem(tableName));
+                // if (!users || users.length == 0) {
+                //     var arr = [];
+                //     arr.push(superuser);
+                //     localStorage.setItem(tableName, JSON.stringify(arr));
+                // } else {
+                //     users.push(superuser);
+                //     localStorage.setItem(tableName, JSON.stringify(users));
+                // }    // onload가 항상 더 나중이라는 것을 기억. 시퀀셜하겡!!!!
+
+                // 순서 - ok
+                //localStorage.getItem()했는데 null -> [{eId:"sudo",ePw:"1004",eNickname:"superuser",eImg:"images/sudo.jpg"}]로 setItem
+                //localStorage.getItem()했는데 length 0 -> 동일
+                //localStorage.getItem()했는데 null두 아니구 다른 유저들 정보도 들어 있지만 sudo계정이 안담겨있엉 - > sudo만 users에 인서트하고 재setting
+
+
+                var nowId = request.getParameter("nm_id");
+
+                var $v_profileNickname = $("<div></div>");
+                $v_profileNickname.attr("class", "cl_profileId").css("position", "absolute");
+                $v_profileNickname.appendTo($(v_accountProfile));
+
+                for (var i = 0; i < users.length; i++) {
+                    if (nowId == users[i].eId) {
+                        $v_profileNickname.html(users[i].eNickname);
+                        $(v_accountProfile).children().eq(0).attr("src", users[i].eImg);
+                        $(v_tweetInput).children().eq(0).attr("src", users[i].eImg); // 시퀀셜하겡
+                        break;
+                    }
+                }
+
+                var v_profileId = document.createElement("div");
+                v_profileId.innerHTML = "@" + nowId;
+                $(v_profileId).attr("class", "cl_profileId").css("position", "absolute");
+                $(v_accountProfile).append($(v_profileId));
+
+                var v_accountToLogout = document.querySelector("#id_accountProfile").cloneNode(true);
+                v_accountToLogout.children[0].style.borderRadius = "25px";
+                v_accountToLogout.children[1].style.display = "none";
+                $(v_accountToLogout).attr("id", "id_accountToLogout").css({ "border": "1px solid transparent", "backgroundColor": "white" });
+
+                var checkMark = document.createElement("img");
+                checkMark.setAttribute("id", "id_checkMark");
+                checkMark.src = "./images/checkMarkBlue.png";
+                v_accountToLogout.appendChild(checkMark);
+                v_chottoLogout.appendChild(v_accountToLogout);
+
+                v_chottoLogout.innerHTML += "<br><hr>";
+
+                var v_addAccount = document.createElement("div");
+                v_addAccount.setAttribute("id", "id_addAccount");
+                v_addAccount.innerHTML = "&nbsp&nbsp&nbsp&nbsp기존 계정 추가<hr>";
+                v_chottoLogout.appendChild(v_addAccount);
+                v_addAccount.addEventListener("mouseover", function () {
+                    this.style.backgroundColor = "rgb(233, 238, 242)";
+                });
+                v_addAccount.addEventListener("mouseout", function () {
+                    this.style.backgroundColor = "transparent";
+                });
+
+                var v_logingOut = document.createElement("div");
+                v_logingOut.setAttribute("id", "id_logingOut");
+                v_logingOut.innerHTML
+                    = "&nbsp&nbsp&nbsp&nbsp@" + request.getParameter("nm_id") + " 님 계정에서 로그아웃";
+                v_chottoLogout.appendChild(v_logingOut);
+                v_logingOut.addEventListener("mouseover", function () {
+                    this.style.backgroundColor = "rgb(233, 238, 242)";
+                });
+                v_logingOut.addEventListener("mouseout", function () {
+                    this.style.backgroundColor = "transparent";
+                });
+
+                //v_chottoLogout 내의 v_logingOut을 클릭하면, 로그아웃창으로.
+                v_logingOut.addEventListener("click", function () {
+                    location.href = "twitterLogout.html";
+                });
+
+
+                //말풍선 모양 만들려고... 그냥 쪼고만 네모.
+                var v_semo = document.createElement("div");
+                v_semo.setAttribute("id", "id_semo");
+                v_chottoLogout.appendChild(v_semo);
+            };
+
+
+            //트윗 검색창
+
+            var v_search = document.querySelector("#id_search");
+            // var v_searchInput = v_search.children[1];
+            var v_searchInput = document.querySelector("#id_searchInput");
+            var v_chottoShow = document.querySelector("#id_chottoShow")
+
+            v_searchInput.addEventListener("click", function () {
+                v_search.style.backgroundColor = "white";
+                v_search.style.border = "1px solid rgb(28, 164, 244)";
+                v_chottoShow.style.display = "inline-block";
+                v_chottoShow.style.zIndex = 100;
+            });
+
+
+            v_searchInput.onblur = function () {
+                v_search.style.backgroundColor = "rgb(233, 238, 242)";
+                v_search.style.border = "1px solid transparent";
+                v_chottoShow.style.display = "none";
+            };
+
+            // 검색할 키워드 search.html로 get방식 패스
+            $(v_searchInput).keypress(function () {
+                event.preventDefault();
+                if (event.keyCode == 13) {
+                    var userIdToPass = request.getParameter("nm_id");
+                    location.href = "search.html?nm_id=" + userIdToPass + "&q=" + $(this).val();
+                }
+            });
+
+            var v_downBelow = document.getElementById("id_downBelow");
+            var v_chottoLogout = document.getElementById("id_chottoLogout");
+
+            var isRun = false;
+
+            //downBelow버튼 누르면 계정선택창 디스플레이를 inline-block으로.
+            v_downBelow.addEventListener("click", function () {
+                if (!isRun) {
+                    v_chottoLogout.style.display = "inline-block";
+                    v_accountProfile.style.cursor = "default";
+                    isRun = true;
+                }
+            });
+            //downBelow 버튼외의 공간을 누르면 계정선택창을 none으로.
+            //이 아니고!! downBelow와 계정선택창 두개를 제외한 공간 선택시 none이되어야함
+
+            v_chottoLogout.addEventListener("mouseleave", function () {
+                v_chottoLogout.style.display = "none";
+                v_accountProfile.style.cursor = "pointer";
+                isRun = false;
+            });
+
+            //계정선택창내 두가지 선택지(기존계정추가, 로그아웃)
+            //누르면 계정선택창이 닫혀버리는 버그 수정할 것 (完)
+        </script>
+    </form>
+</body>
+
+</html>

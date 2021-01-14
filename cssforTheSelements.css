@@ -1,0 +1,121 @@
+        .searchTaishouAll {
+            position: relative;
+            transform: translateX(-1px);
+            width: 497px;
+            height: 110px;
+            border: 0.5px solid rgba(63, 59, 59, 0.22);
+            display: block;
+        }
+
+        textarea:focus {
+            outline: none;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .cl_sTextarea {
+            display: inline-block;
+            line-height: 40px;
+            font-size: 18px;
+            width: 400px;
+            border: transparent;
+            background-color: transparent;
+            position: absolute;
+            left: 70px;
+            top: 23px;
+            resize: none;
+        }
+
+        .searchTaishouAll> :nth-child(3) {
+            width: 130px;
+            height: 15px;
+            position: absolute;
+            left: 70px;
+            top: 13px;
+            display: inline-block;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .searchTaishouAll> :nth-child(4) {
+            width: 290px;
+            height: 15px;
+            position: absolute;
+            left: 190px;
+            top: 12px;
+            color: gray;
+            font-size: 13px;
+            display: inline-block;
+        }
+
+        .cl_sReaction {
+            display: inline-block;
+            position: relative;
+            width: 25px;
+            height: 25px;
+            border-radius: 12.5px;
+            background-size: contain;
+            cursor: pointer;
+            top: 72px;
+            background-color: transparent;
+            border: 1px solid white;
+            color: black;
+        }
+
+        .cl_botsPhotoTweet{
+            position: relative;
+            transform: translateX(-1px);
+            width: 497px;
+            height: 440px;
+            border: 0.5px solid rgba(63, 59, 59, 0.219);
+            display: block;
+        }
+
+        .cl_bReaction{
+            /* top: 398px; */
+            top: 405px;
+            left: 50px;
+
+            display: inline-block;
+            position: relative;
+            width: 25px;
+            height: 25px;
+            border-radius: 12.5px;
+            background-size: contain;
+            cursor: pointer;
+            background-color: transparent;
+            border: 1px solid white;
+        }
+
+        .cl_botsPhotoTweet> :nth-child(3) {
+            width: 130px;
+            height: 15px;
+            position: absolute;
+            left: 70px;
+            top: 13px;
+            display: inline-block;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .cl_botsPhotoTweet> :nth-child(4) {
+            width: 180px;
+            height: 15px;
+            position: absolute;
+            left: 120px;
+            top: 12px;
+            color: gray;
+            font-size: 13px;
+            display: inline-block;
+        }
+
+        .cl_searchedTweet{
+            position: relative;
+            transform: translateX(-1px);
+            width: 497px;
+            height: 130px;
+            border: 0.5px solid rgba(63, 59, 59, 0.219);
+            display: block;
+        }
